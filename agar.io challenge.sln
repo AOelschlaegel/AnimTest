@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agar.io challenge", "agar.io challenge.csproj", "{D3AE51B7-DB87-15A6-3D76-86376641C5EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3AE51B7-DB87-15A6-3D76-86376641C5EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AE51B7-DB87-15A6-3D76-86376641C5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AE51B7-DB87-15A6-3D76-86376641C5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AE51B7-DB87-15A6-3D76-86376641C5EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
