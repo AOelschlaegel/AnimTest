@@ -2,43 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_movement : MonoBehaviour {
+public class Player_movement : MonoBehaviour 
+{
+    public int Speed = 2;
+    public Text ScoreText;
+    public Camera MainCamera;
 
-    public int speed = 2;
+    private Vector3 _scale;
+    private Vector3 _scaleFactor;
+    private Vector3 _mousePos;
+    private float _score = 0f;
 
-    public Camera mainCamera;
-
-    private Vector3 scale;
-    private Vector3 scaleFactor;
-    Vector3 mousePos;
-
-    private void Awake()
+    private void Awake() 
     {
-        scaleFactor = new Vector3(0.5f, 0.5f, 0.5f);
-        scale = new Vector3(1, 1, 1);
+        _scaleFactor = new Vector3(0.5f, 0.5f, 0.5f);
+        _scale = new Vector3(1, 1, 1);
     }
 
-    // Update is called once per frame
-    void Update () {
-        mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        transform.position = Vector2.Lerp(transform.position, mousePos, speed * Time.deltaTime/(scale.x*3));
-        transform.localScale = scale;
+    void Update() 
+    {
+        _mousePos = Input.mousePosition;
+        _mousePos = Camera.main.ScreenToWorldPoint(_mousePos);
+        transform.position = Vector2.Lerp(transform.position, _mousePos, Speed * Time.deltaTime / (_scale.x * 3));
+        transform.localScale = _scale;
+
+
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.tag == "enemy" && other.transform.localScale.x < transform.localScale.x)
+        if(other.tag == "enemy" && other.transform.localScale.x < transform.localScale.x) 
         {
-            scale += other.transform.localScale/4;
-            Debug.Log("scale is :" + scale);
-            Destroy(other.gameObject);
-            
-            if(scale.x > 4)
-            {
-                mainCamera.orthographicSize++;
-            }
+            _scale += other.transform.localScale
+            SetCountText();
+            Debug.Log ("scale is :" + _scale);
+            Destroy (other.gameObject);
 
+            if(_scale.x > 4) 
+            {
+                MainCamera.orthographicSize++;
+            }
         }
+    }
+
+    private void SetCountText()
+    {
+        _score += other.transform.localScale.x;
+        ScoreText.text = _score.ToString();
     }
 }
